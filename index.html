@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <meta http-equiv="Expires" content="0"/>
+    <meta http-equiv="Cache" content="no-cache"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Cache-Control" content="no-cache"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css" href="./css/pagination.css"/>
+    <script type="text/javascript" src="./js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript" src="./js/pagination.min.js"></script>
+    <style>
+        .cib {
+            padding: 5px 2px;
+        }
+
+        .cib input {
+            vertical-align: bottom;
+            height: 20px;
+            color: #567e84;
+            margin: 2px 0px;
+        }
+
+        .cib button {
+            vertical-align: bottom;
+            height: 26px;
+            cursor: pointer;
+            background-color: #cbefff;
+            border: 1px solid #44a8d6;
+            color: #567e84;
+            margin: 2px 0px;
+        }
+
+        .desc {
+            padding-left: 2px;
+            color: #657e9a;
+        }
+
+        .code-con{
+            font-size: 18px;
+        }
+
+        .hr-c{
+            background-color: #2196F3;
+            height: 5px;
+            border: 0px;
+        }
+    </style>
+</head>
+<body>
+    <div class="desc">使用ajax分页例子，默认每页5条(建议初始化分页插件参数isResetPage设为true)：</div>
+    <br/>
+    <div class="desc">
+        <code class="code-con">
+            function loadData(currPage, pageSize) {<br/>
+            &nbsp;&nbsp;$.ajax({<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;//其它参数选项请自填<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;success: function(res) {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//处理数据<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//设置分页插件显示<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$("#pagination").whjPaging("setPage", {currPage:  res.currPage, totalPage: res.totalPage, totalSize: res.totalSize});<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;}<br/>
+            &nbsp;&nbsp;});<br/>
+            }<br/><br/>
+            $("#pagination").whjPaging({<br/>
+            &nbsp;&nbsp;//设为true时，ajax里的success函数必须调用setPage方法，否则分页插件显示保持不变<br/>
+            &nbsp;&nbsp;isResetPage: true,<br/>
+            &nbsp;&nbsp;callBack: function(currPage, pageSize) {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;loadData(currPage, pageSize);<br/>
+            &nbsp;&nbsp;}<br/>
+            });<br/><br/>
+            loadData(1, 5);<br/>
+        </code>
+    </div>
+    <br/>
+    <hr class="hr-c"/>
+
+    <div class="desc">使用静态数据分页例子，默认每页5条(建议初始化分页插件参数isResetPage设为false，默认false)：</div>
+    <br/>
+    <div class="desc">
+        <code class="code-con">
+            function loadData(currPage, pageSize) {<br/>
+            &nbsp;&nbsp;//处理数据<br/>
+            }<br/><br/>
+            $("#pagination").whjPaging({<br/>
+            &nbsp;&nbsp;//静态数据已知的总条数<br/>
+            &nbsp;&nbsp;totalSize: 90,<br/>
+            &nbsp;&nbsp;//静态数据已知的总页数<br/>
+            &nbsp;&nbsp;totalPage: 18,<br/>
+            &nbsp;&nbsp;callBack: function(currPage, pageSize) {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;loadData(currPage, pageSize);<br/>
+            &nbsp;&nbsp;}<br/>
+            });<br/><br/>
+            loadData(1, 5);<br/>
+        </code>
+    </div>
+    <br/>
+    <hr class="hr-c"/>
+
+    <div class="desc">初始化分页插件参数：</div>
+    <br/>
+    <div class="desc">
+        <code class="code-con">
+            var options = {<br/>
+            &nbsp;&nbsp;//可选，css设置，可设置值：css-1，css-2，css-3，css-4，css-5，默认css-1，可自定义样式<br/>
+            &nbsp;&nbsp;css: 'css-1',<br/>
+            &nbsp;&nbsp;//可选，每页条数下拉框，5条/页(默认)、10条/页、15条/页、20条/页<br/>
+            &nbsp;&nbsp;pageSizeOpt: [<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;{value: 5, text: '5条/页', selected: true},<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;{value: 10, text: '10条/页'},<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;{value: 15, text: '15条/页'},<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;{value: 20, text: '20条/页'}<br/>
+            &nbsp;&nbsp;],<br/>
+            &nbsp;&nbsp;//可选，总条数<br/>
+            &nbsp;&nbsp;totalSize: 90,<br/>
+            &nbsp;&nbsp;//可选，总页数<br/>
+            &nbsp;&nbsp;totalPage: 18,<br/>
+            &nbsp;&nbsp;//可选，展示页码数量，默认5个页码数量<br/>
+            &nbsp;&nbsp;showPageNum: 5,<br/>
+            &nbsp;&nbsp;//可选，首页按钮展示文本，默认显示文本为首页<br/>
+            &nbsp;&nbsp;firstPage: "首页",<br/>
+            &nbsp;&nbsp;//可选，上一页按钮展示文本，默认显示文本为上一页<br/>
+            &nbsp;&nbsp;previousPage: "上一页",<br/>
+            &nbsp;&nbsp;//可选，下一页按钮展示文本，默认显示文本为下一页<br/>
+            &nbsp;&nbsp;nextPage: "下一页",<br/>
+            &nbsp;&nbsp;//可选，尾页按钮展示文本，默认显示文本为尾页<br/>
+            &nbsp;&nbsp;lastPage: "尾页",<br/>
+            &nbsp;&nbsp;//可选，跳至展示文本，默认显示文本为跳至<br/>
+            &nbsp;&nbsp;skip: "跳至",<br/>
+            &nbsp;&nbsp;//可选，确认按钮展示文本，默认显示文本为确认<br/>
+            &nbsp;&nbsp;confirm: "确认",<br/>
+            &nbsp;&nbsp;//可选，刷新按钮展示文本，默认显示文本为刷新<br/>
+            &nbsp;&nbsp;refresh: "刷新",<br/>
+            &nbsp;&nbsp;//可选，共{}页展示文本，默认显示文本为共{}页，其中{}会在js具体转化为数字<br/>
+            &nbsp;&nbsp;totalPageText: "共{}页",<br/>
+            &nbsp;&nbsp;//可选，共{}条记录展示文本，默认显示文本为共{}条记录，其中{}会在js具体转化为数字<br/>
+            &nbsp;&nbsp;totalSizeText: "共{}条记录",<br/>
+            &nbsp;&nbsp;//可选，是否展示首页与尾页，默认true<br/>
+            &nbsp;&nbsp;isShowFL: true,<br/>
+            &nbsp;&nbsp;//可选，是否展示每页条数下拉框，默认true，如果设置显示，总条数必须设置<br/>
+            &nbsp;&nbsp;isShowPageSizeOpt: true,<br/>
+            &nbsp;&nbsp;//可选，是否展示跳到指定页数，默认true<br/>
+            &nbsp;&nbsp;isShowSkip: true,<br/>
+            &nbsp;&nbsp;//可选，是否展示刷新，默认true<br/>
+            &nbsp;&nbsp;isShowRefresh: true,<br/>
+            &nbsp;&nbsp;//可选，是否展示共{}页，默认true<br/>
+            &nbsp;&nbsp;isShowTotalPage: true,<br/>
+            &nbsp;&nbsp;//可选，是否展示共{}条记录，默认true<br/>
+            &nbsp;&nbsp;isShowTotalSize: true,<br/>
+            &nbsp;&nbsp;//可选，是否需要重新设置当前页码、总页数及总条数，默认false，如果设为true，那么在请求服务器返回数据时，需要调用setPage方法<br/>
+            &nbsp;&nbsp;isResetPage: false,<br/>
+            &nbsp;&nbsp;//必选，回掉函数，返回参数：第一个参数为页码，第二个参数为每页显示N条<br/>
+            &nbsp;&nbsp;callBack: function (currPage, pageSize) {<br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;console.log('currPage:' + currPage + '     pageSize:' + pageSize);<br/>
+            &nbsp;&nbsp;}<br/>
+            };<br/>
+        </code>
+    </div>
+    <br/>
+    <hr class="hr-c"/>
+
+    <div class="desc">setPage | getPage方法：</div>
+    <br/>
+    <div class="desc">
+        <code class="code-con">
+            //setPage方法<br/>
+            $("#pagination").whjPaging("setPage", {currPage:  当前页码, totalPage: 总页数, totalSize: 总条数});<br/><br/>
+            //getPage方法，返回一个对象 {totalSize: 总条数, currPage: 当前页码, pageSize: 每页显示条数, totalPage: 总页数}<br/>
+            $("#pagination").whjPaging("getPage");<br/>
+        </code>
+    </div>
+    <br/>
+    <hr class="hr-c"/>
+
+    <div class="desc">总页数为零时，不显示分页插件，可自定义显示文字及css</div>
+
+    <div id="pagination_1"></div>
+    <br/>
+
+    <div id="pagination_2"></div>
+    <br/>
+
+    <div id="pagination_3"></div>
+    <br/>
+
+    <div id="pagination_4"></div>
+    <br/>
+
+    <div id="pagination_5"></div>
+    <br/>
+
+    <div id="pagination_6"></div>
+    <br/>
+
+    <div id="pagination_7"></div>
+    <br/>
+
+    <div id="pagination_8"></div>
+    <br/>
+
+    <div id="pagination_9"></div>
+    <br/>
+
+    <div id="pagination_10"></div>
+    <br/>
+
+    <div class="desc">当请求服务器返回数据时，需要重新设置当前页码、总页数及总条数</div>
+    <div class="cib">
+        <input type="text" name="currPage_11" placeholder="当前页码"/>
+        <input type="text" name="totalPage_11" placeholder="总页数"/>
+        <input type="text" name="totalSize_11" placeholder="总条数"/>
+        <button type="button" id="btn_11">设置</button>
+    </div>
+    <div id="pagination_11"></div>
+    <br/>
+
+    <div class="desc">获取当前页码、总页数、总条数及每页显示条数，请用控制台查看</div>
+    <div class="cib">
+        <button type="button" id="btn_12">获取</button>
+    </div>
+    <div id="pagination_12"></div>
+    <br/>
+
+    <div id="pagination_13"></div>
+    <br/>
+
+    <div id="pagination_14"></div>
+    <br/>
+
+    <div id="pagination_15"></div>
+    <br/>
+
+    <div id="pagination_16"></div>
+    <br/>
+
+    <div id="pagination_17"></div>
+    <br/>
+
+    <div id="pagination_18"></div>
+    <br/>
+
+    <div id="pagination_19"></div>
+    <br/>
+
+    <div id="pagination_20"></div>
+    <br/>
+
+    <script type="text/javascript">
+        $("#pagination_1").whjPaging({
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_2").whjPaging({
+            css: 'css-1',
+            pageSizeOpt: [
+                {value: 5, text: '5/page', selected: true},
+                {value: 10, text: '10/page'},
+                {value: 15, text: '15/page'},
+                {value: 20, text: '20/page'}
+            ],
+            totalSize: 90,
+            totalPage: 18,
+            showPageNum: 5,
+            firstPage: 'first',
+            previousPage: 'previous',
+            nextPage: 'next',
+            lastPage: 'last',
+            skip: 'skip',
+            confirm: 'go',
+            refresh: 'refresh',
+            totalPageText: 'the total {} pages',
+            totalSizeText: "the total {} records",
+            isShowFL: true,
+            isShowSkip: true,
+            isResetPage: false,
+            isShowRefresh: true,
+            isShowTotalPage: true,
+            isShowTotalSize: true,
+            isShowPageSizeOpt: true,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_3").whjPaging({
+            totalSize: 90,
+            totalPage: 18,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_4").whjPaging({
+            totalSize: 90,
+            totalPage: 18,
+            isShowTotalSize: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_5").whjPaging({
+            totalSize: 90,
+            totalPage: 18,
+            isShowTotalSize: false,
+            isShowTotalPage: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_6").whjPaging({
+            totalSize: 90,
+            totalPage: 18,
+            isShowTotalSize: false,
+            isShowTotalPage: false,
+            isShowRefresh: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_7").whjPaging({
+            totalSize: 90,
+            totalPage: 18,
+            isShowTotalSize: false,
+            isShowTotalPage: false,
+            isShowRefresh: false,
+            isShowSkip: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_8").whjPaging({
+            totalPage: 18,
+            isShowTotalSize: false,
+            isShowTotalPage: false,
+            isShowRefresh: false,
+            isShowSkip: false,
+            isShowPageSizeOpt: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_9").whjPaging({
+            totalPage: 18,
+            isShowTotalSize: false,
+            isShowTotalPage: false,
+            isShowRefresh: false,
+            isShowSkip: false,
+            isShowPageSizeOpt: false,
+            isShowFL: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_10").whjPaging({
+            totalPage: 18,
+            isShowTotalSize: false,
+            isShowTotalPage: false,
+            isShowRefresh: false,
+            isShowSkip: false,
+            isShowPageSizeOpt: false,
+            isShowFL: false,
+            showPageNum: 0,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_11").whjPaging({
+            totalSize: 90,
+            totalPage: 18,
+            isResetPage: true,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#btn_11").click(function () {
+            var currPage = +$("input[name='currPage_11']").val();
+            var totalPage = +$("input[name='totalPage_11']").val();
+            var totalSize = +$("input[name='totalSize_11']").val();
+            $("#pagination_11").whjPaging('setPage', {currPage: currPage, totalPage: totalPage, totalSize: totalSize});
+        });
+        $("#pagination_12").whjPaging({
+            css: 'css-2',
+            totalSize: 90,
+            totalPage: 18,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#btn_12").click(function () {
+            console.log($("#pagination_12").whjPaging('getPage'));
+        });
+        $("#pagination_13").whjPaging({
+            css: 'css-3',
+            totalSize: 90,
+            totalPage: 18,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_14").whjPaging({
+            css: 'css-4',
+            totalSize: 90,
+            totalPage: 18,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_15").whjPaging({
+            css: 'css-5',
+            totalSize: 90,
+            totalPage: 18,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_16").whjPaging({
+            css: 'css-2',
+            totalPage: 18,
+            previousPage: '<',
+            nextPage: '>',
+            isShowFL: false,
+            isShowPageSizeOpt: false,
+            isShowSkip: false,
+            isShowRefresh: false,
+            isShowTotalPage: false,
+            isShowTotalSize: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_17").whjPaging({
+            css: 'css-5',
+            totalPage: 18,
+            showPageNum: 0,
+            isShowFL: false,
+            isShowPageSizeOpt: false,
+            isShowSkip: false,
+            isShowRefresh: true,
+            isShowTotalPage: false,
+            isShowTotalSize: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_18").whjPaging({
+            css: 'css-4',
+            totalPage: 18,
+            showPageNum: 3,
+            previousPage: '<',
+            nextPage: '>',
+            isShowFL: false,
+            isShowPageSizeOpt: false,
+            isShowSkip: false,
+            isShowRefresh: false,
+            isShowTotalPage: false,
+            isShowTotalSize: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_19").whjPaging({
+            css: 'css-1',
+            totalSize: 90,
+            totalPage: 18,
+            showPageNum: 3,
+            previousPage: '<',
+            nextPage: '>',
+            isShowFL: false,
+            isShowPageSizeOpt: false,
+            isShowSkip: false,
+            isShowRefresh: false,
+            isShowTotalPage: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+        $("#pagination_20").whjPaging({
+            css: 'css-5',
+            totalSize: 90,
+            totalPage: 18,
+            showPageNum: 3,
+            previousPage: '<',
+            nextPage: '>',
+            isShowFL: false,
+            isShowPageSizeOpt: false,
+            isShowSkip: false,
+            isShowRefresh: false,
+            callBack: function (currPage, pageSize) {
+                console.log('currPage:' + currPage + '     pageSize:' + pageSize);
+            }
+        });
+    </script>
+</body>
+</html>
