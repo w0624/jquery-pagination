@@ -1,9 +1,9 @@
 @charset "UTF-8";
 
 /**
- * @version: v1.7
+ * @version: v1.8
  * @author: xgc-whj
- * @date: 2018-05-25 21:40:00
+ * @date: 2019-05-29 00:00:00
  * @license: MIT license release
  * @jq22 address: http://www.jq22.com/jquery-info17548
  * @GitHub: https://github.com/w0624/jquery-pagination
@@ -21,7 +21,7 @@
 
 .whj_jqueryPaginationCss-1 div {
     display: inline-block;
-    vertical-align: bottom;
+    vertical-align: middle;
     height: 24px;
     line-height: 24px;
 }
@@ -61,7 +61,7 @@
 
 .whj_jqueryPaginationCss-1 select {
     height: 28px;
-    vertical-align: bottom;
+    vertical-align: middle;
     padding: 0px;
     outline: none;
 }
@@ -72,7 +72,7 @@
     outline: none;
     text-align: center;
     width: 60px;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 
 .whj_jqueryPaginationCss-1 div, .whj_jqueryPaginationCss-1 input, .whj_jqueryPaginationCss-1 select {
@@ -95,7 +95,7 @@
 
 .whj_jqueryPaginationCss-2 div {
     display: inline-block;
-    vertical-align: bottom;
+    vertical-align: middle;
     height: 24px;
     line-height: 24px;
 }
@@ -135,7 +135,7 @@
 
 .whj_jqueryPaginationCss-2 select {
     height: 28px;
-    vertical-align: bottom;
+    vertical-align: middle;
     padding: 0px;
     outline: none;
 }
@@ -146,7 +146,7 @@
     outline: none;
     text-align: center;
     width: 60px;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 
 .whj_jqueryPaginationCss-2 div, .whj_jqueryPaginationCss-2 input, .whj_jqueryPaginationCss-2 select {
@@ -169,7 +169,7 @@
 
 .whj_jqueryPaginationCss-3 div {
     display: inline-block;
-    vertical-align: bottom;
+    vertical-align: middle;
     height: 24px;
     line-height: 24px;
 }
@@ -209,7 +209,7 @@
 
 .whj_jqueryPaginationCss-3 select {
     height: 28px;
-    vertical-align: bottom;
+    vertical-align: middle;
     padding: 0px;
     outline: none;
 }
@@ -220,7 +220,7 @@
     outline: none;
     text-align: center;
     width: 60px;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 
 .whj_jqueryPaginationCss-3 div, .whj_jqueryPaginationCss-3 input, .whj_jqueryPaginationCss-3 select {
@@ -243,7 +243,7 @@
 
 .whj_jqueryPaginationCss-4 div {
     display: inline-block;
-    vertical-align: bottom;
+    vertical-align: middle;
     height: 24px;
     line-height: 24px;
 }
@@ -283,7 +283,7 @@
 
 .whj_jqueryPaginationCss-4 select {
     height: 28px;
-    vertical-align: bottom;
+    vertical-align: middle;
     padding: 0px;
     outline: none;
 }
@@ -294,7 +294,7 @@
     outline: none;
     text-align: center;
     width: 60px;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 
 .whj_jqueryPaginationCss-4 div, .whj_jqueryPaginationCss-4 input, .whj_jqueryPaginationCss-4 select {
@@ -317,7 +317,7 @@
 
 .whj_jqueryPaginationCss-5 div {
     display: inline-block;
-    vertical-align: bottom;
+    vertical-align: middle;
     height: 24px;
     line-height: 24px;
 }
@@ -357,7 +357,7 @@
 
 .whj_jqueryPaginationCss-5 select {
     height: 28px;
-    vertical-align: bottom;
+    vertical-align: middle;
     padding: 0px;
     outline: none;
 }
@@ -368,7 +368,7 @@
     outline: none;
     text-align: center;
     width: 60px;
-    vertical-align: bottom;
+    vertical-align: middle;
 }
 
 .whj_jqueryPaginationCss-5 div, .whj_jqueryPaginationCss-5 input, .whj_jqueryPaginationCss-5 select {

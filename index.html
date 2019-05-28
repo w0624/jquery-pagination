@@ -37,6 +37,11 @@
             color: #657e9a;
         }
 
+        .desc-red {
+            padding-left: 2px;
+            color: red;
+        }
+
         .code-con{
             font-size: 18px;
         }
@@ -49,6 +54,23 @@
     </style>
 </head>
 <body>
+    <div class="desc-red">
+        <span>在这里，得着重说一下：</span>
+        <br/>
+        <span>1.初始化分页插件时，是数字类型的参数最好不要用字符串来表示，不然渲染可能会有问题.</span>
+        <br/>
+        <span>2.使用setPage方法时，必须注意传入的参数是数字类型，而不是字符串类型，如果是字符串类型，请使用parseInt()转化下.</span>
+        <br/>
+        <span>3.当前插件适合与ajax结合使用或者是静态分页，不建议url刷新分页，初衷设计就是为了前后端分离.</span>
+        <br/>
+        <span>4.如果真的需要url刷新分页，那么也是可以的，每次刷新分页后，先初始化插件并且不去设置总页数参数，然后在使用setPage方法即可.</span>
+        <br/>
+        <span>5.插件初始化的时候没有开放当前页参数，默认为1.</span>
+        <br/>
+        <span>6.插件兼容原生IE8，但jq库得支持IE8才行.</span>
+    </div>
+    <br/>
+    <hr class="hr-c"/>
     <div class="desc">使用ajax分页例子，默认每页5条(建议初始化分页插件参数isResetPage设为true)：</div>
     <br/>
     <div class="desc">
